@@ -22,6 +22,10 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
+    <style name="AppTheme.Dialog" parent="AppTheme">
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
     <style name="Theme.LoginBlue" parent="Theme.LoginBlue.Base" />
 
     <style name="Theme.LoginBlue.Base" parent="Theme.AppCompat.DayNight.NoActionBar">
