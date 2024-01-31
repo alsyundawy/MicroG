@@ -22,14 +22,12 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -84,7 +82,6 @@ import static org.microg.gms.auth.AuthPrefs.isAuthVisible;
 //import static org.microg.gms.checkin.CheckinPreferences.hideLauncherIcon;
 import static org.microg.gms.checkin.CheckinPreferences.isSpoofingEnabled;
 import static org.microg.gms.checkin.CheckinPreferences.setSpoofingEnabled;
-import static org.microg.gms.common.Constants.GMS_PACKAGE_NAME;
 import static org.microg.gms.common.Constants.GMS_VERSION_CODE;
 import static org.microg.gms.common.Constants.GOOGLE_GMS_PACKAGE_NAME;
 
@@ -163,7 +160,7 @@ public class LoginActivity extends AssistantActivity {
             init();
         } else {
             setMessage(R.string.auth_before_connect);
-            setBackButtonText(android.R.string.cancel);
+            setSpoofButtonText(R.string.brand_spoof_button);
             setNextButtonText(R.string.auth_sign_in);
         }
     }
@@ -202,18 +199,9 @@ public class LoginActivity extends AssistantActivity {
         }
     }
 
-    @Override
-    protected void onBackButtonClicked() {
-        super.onBackButtonClicked();
-        state--;
-        if (state == -1) {
-            finish();
-        }
-    }
-
     private void init() {
         setTitle(R.string.just_a_sec);
-        setBackButtonText(null);
+        setSpoofButtonText(null);
         setNextButtonText(null);
         View loading = getLayoutInflater().inflate(R.layout.login_assistant_loading, authContent, false);
         authContent.removeAllViews();
